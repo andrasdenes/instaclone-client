@@ -1,6 +1,6 @@
 ## Server
 
-[https://github.com/andrasdenes/instaclone-server]
+[https://github.com/andrasdenes/instaclone-server](available in this repository)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
