@@ -45,14 +45,6 @@ const Profile = () => {
           className="item"
           src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
         />
-        <img
-          className="item"
-          src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
-        />
-        <img
-          className="item"
-          src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
-        />
       </div>
     </div>
   );
