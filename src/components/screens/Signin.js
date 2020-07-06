@@ -1,8 +1,12 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useContext } from "react";
+import { UserContext } from "../../App";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
+import { reducer } from "../../reducers/userReducer";
 
 const Signin = () => {
+  const { state, dispatch } = useContext(UserContext);
+
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,6 +24,7 @@ const Signin = () => {
         } else {
           localStorage.setItem("jwt", "Bearer " + data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+          dispatch({ type: "USER", payload: data.user });
           M.toast({
             html: "Succesful login",
             classes: "#00c853 green accent-4",
