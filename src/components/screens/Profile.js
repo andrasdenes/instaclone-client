@@ -1,6 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
+import { UserContext } from "../../App";
 
 const Profile = () => {
+  const [data, setData] = useState([]);
+  const { state, dispatch } = useContext(UserContext);
+  useEffect(() => {
+    fetch("post/myposts", {
+      headers: { authorization: localStorage.getItem("jwt") },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setData(result.posts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div style={{ maxWidth: "600px", margin: "0px auto" }}>
       <div
@@ -18,7 +33,7 @@ const Profile = () => {
           />
         </div>
         <div>
-          <h4>andras</h4>
+          <h4>{state ? state.name : "loading..."}</h4>
           <div
             style={{
               display: "flex",
@@ -33,18 +48,16 @@ const Profile = () => {
         </div>
       </div>
       <div className="gallery">
-        <img
-          className="item"
-          src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
-        />
-        <img
-          className="item"
-          src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
-        />
-        <img
-          className="item"
-          src="https://images.unsplash.com/photo-1587173399514-ebfc0f4fa396?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=784&q=80"
-        />
+        {data.map((item) => {
+          return (
+            <img
+              key={item._id}
+              className="item"
+              src={item.photo}
+              alt={item.title}
+            />
+          );
+        })}
       </div>
     </div>
   );

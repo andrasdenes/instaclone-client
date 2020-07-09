@@ -7,7 +7,7 @@ import Profile from "./components/screens/Profile";
 import Signup from "./components/screens/Signup";
 import Signin from "./components/screens/Signin";
 import CreatePost from "./components/screens/CreatePost";
-import { reducer, initalState, initialState } from "./reducers/userReducer";
+import { reducer, initialState } from "./reducers/userReducer";
 
 export const UserContext = createContext();
 
@@ -18,7 +18,6 @@ const Routing = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       dispatch({ type: "USER", payload: user });
-      history.push("/");
     } else {
       history.push("/signin");
     }
